@@ -8,6 +8,7 @@ Import-Module Az.RecoveryServices
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 $vault=Get-AzRecoveryServicesVault -Name "VaultName" 
+Set-AzRecoveryServicesVaultContext -Vault $vault
 $endDate = (Get-Date).AddDays(10).ToUniversalTime()
 $backupcontainer = Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName "VMName" -VaultId $vault.ID
 $item = Get-AzRecoveryServicesBackupItem -Container $backupcontainer -WorkloadType "AzureVM" -VaultId $vault.ID
