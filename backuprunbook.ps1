@@ -13,3 +13,4 @@ $endDate = (Get-Date).AddDays(10).ToUniversalTime()
 $backupcontainer = Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName "VMName" -VaultId $vault.ID
 $item = Get-AzRecoveryServicesBackupItem -Container $backupcontainer -WorkloadType "AzureVM" -VaultId $vault.ID
 Backup-AzRecoveryServicesBackupItem -Item $item -ExpiryDateTimeUTC $endDate
+#Lets see how this works
